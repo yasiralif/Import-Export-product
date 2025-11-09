@@ -1,10 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import { CircleUser } from 'lucide-react';
+import  './Navbar.css'
 
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar bg-[#616053] text-base-100  shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -13,25 +15,27 @@ const Navbar = () => {
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-           <li><NavLink>All Products</NavLink></li>
-   <li><NavLink>My Exports</NavLink></li>
-   <li><NavLink>My Imports</NavLink></li>
-   <li><NavLink>Add Export</NavLink></li>
+        <li><NavLink to='/'>Home</NavLink></li>
+   <li><NavLink to='/all-products'>All Products</NavLink></li>
+   <li><NavLink to='/my-exports'>My Exports</NavLink></li>
+   <li><NavLink to='/my-import'>My Imports</NavLink></li>
+   <li><NavLink to='/add-export'>Add Export</NavLink></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <a className="btn btn-ghost text-xl">PlanHat</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-   <li><NavLink>All Products</NavLink></li>
-   <li><NavLink>My Exports</NavLink></li>
-   <li><NavLink>My Imports</NavLink></li>
-   <li><NavLink>Add Export</NavLink></li>
+    <ul className="menu menu-horizontal px-1 ">
+        <li><NavLink to='/'>Home</NavLink></li>
+   <li><NavLink to='/all-products'>All Products</NavLink></li>
+   <li><NavLink to='/my-exports'>My Exports</NavLink></li>
+   <li><NavLink to='/my-import'>My Imports</NavLink></li>
+   <li><NavLink to='/add-export'>Add Export</NavLink></li>
    
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+   <Link className='text-bold btn' to='/login'> <span><CircleUser /></span> Log In</Link>
   </div>
 </div>
             
