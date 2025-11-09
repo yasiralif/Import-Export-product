@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import { CircleUser } from 'lucide-react';
 import  './Navbar.css'
+import { AuthContext } from '../../Context/AuthContext';
 
 const Navbar = () => {
+  const {user, singOut} =useContext(AuthContext)
+
+
+  const handelLogout=(e)=>{
+    singOut()
+    .then(res=>{
+      // console.log(res);
+    })
+    .catch(err=>{
+      // console.log(err);
+    })
+  }
     return (
         <div>
             <div className="navbar bg-[#616053] text-base-100  shadow-sm">
@@ -34,8 +47,45 @@ const Navbar = () => {
    
     </ul>
   </div>
+ 
   <div className="navbar-end">
-   <Link className='text-bold btn' to='/login'> <span><CircleUser /></span> Log In</Link>
+   
+  {
+    user? <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="User Profile"
+                  src={
+                    user.photoURL ||
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  }
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex="-1"
+              className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              
+              <li><button onClick={handelLogout}>Logout</button></li>
+            </ul>
+            </div>
+            :
+             <Link className='text-bold btn' to='/login'> 
+      <span><CircleUser /></span> Log In
+   </Link>
+  }
   </div>
 </div>
             

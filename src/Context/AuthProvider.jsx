@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import {  createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {  createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../Firebase/Frirebase.config';
 import auth from '../Firebase/Frirebase.config';
+
 const AuthProvider = ({children}) => {
-    // const [user, setuser]=useState(null)
+    const [user, setuser]=useState(null)
 
 
     const userlogIn =(email, password)=>{
@@ -22,12 +23,33 @@ const AuthProvider = ({children}) => {
     const googleLogin =()=>{
          return signInWithPopup(auth, googleprovider)
     }
+    // sinout user 
+    const singOut =()=>{
+     return signOut(auth)
+    }
+
+    // on auth state 
+    
+    useEffect(()=>{
+      const unsubscribe=   onAuthStateChanged(auth, (currentUser)=>{
+        setuser(currentUser)
+
+      })
+      return () => {
+      unsubscribe()
+
+    }
+
+    },[])
 
     // this is user can use 
     const userInfo={
+        user,
+        setuser,
         googleLogin,
         emailLogin,
-        userlogIn
+        userlogIn,
+        singOut
 
     }
     return (

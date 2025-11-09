@@ -4,7 +4,8 @@ import { NavLink } from 'react-router';
 import auth from './../Firebase/Frirebase.config';
 import { AuthContext } from '../Context/AuthContext';
 const SingUp = () => {
-  const {googleLogin,emailLogin}=useContext(AuthContext)
+  const {googleLogin,emailLogin, user, setuser}=useContext(AuthContext)
+  // console.log(user);
 
   const handleSubmit=(e)=>{
     e.preventDefault()
@@ -16,19 +17,19 @@ const SingUp = () => {
 
     emailLogin(email,password)
     .then(res=>{
-      console.log(res);
+      setuser(res.user)
       alert('succesfully login')
     })
     .catch(err=>{
-    //  alert(err.code)
+     alert(err.code)
     console.log(err);
 
     })
   }
      const google = () => {
     googleLogin().then(res => {
-     
-     console.log(res);
+      setuser(res.user)
+     alert('succesfully login')
     }).catch(err => {
       alert(err.code)
       

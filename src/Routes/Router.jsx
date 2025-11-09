@@ -7,6 +7,7 @@ import MyExports from './../Pages/MyExports';
 import AddExports from "../Pages/AddExports";
 import LogIn from "../Pages/LogIn";
 import SingUp from "../Pages/SingUp";
+import PrivateRoutes from "../PrivetRoutes/PrivateRoutes";
 
 
 const Router = createBrowserRouter([
@@ -14,7 +15,9 @@ const Router = createBrowserRouter([
         path:'/' , Component: RootLayOut,
         children: [
             { index: true, Component: Home },
-            { path:'/all-products', element: <AllProducts></AllProducts>},
+            { path:'/all-products', element: <PrivateRoutes>
+                <AllProducts></AllProducts>
+            </PrivateRoutes>},
            
           
              { path:'/my-exports', element: <MyExports></MyExports>},
