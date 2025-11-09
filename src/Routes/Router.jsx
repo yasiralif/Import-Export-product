@@ -5,6 +5,8 @@ import AllProducts from "../Pages/AllProducts";
 import MyExports from './../Pages/MyExports';
  import MyImport from './../Pages/MyImport';
 import AddExports from "../Pages/AddExports";
+import LogIn from "../Pages/LogIn";
+import SingUp from "../Pages/SingUp";
 
 
 const Router = createBrowserRouter([
@@ -17,7 +19,9 @@ const Router = createBrowserRouter([
           
              { path:'/my-exports', element: <MyExports></MyExports>},
                { path:'/my-import', element: <MyImport></MyImport>},
-            { path:'/add-export', element: <AddExports></AddExports> }
+            { path:'/add-export', element: <AddExports></AddExports> },
+            {path:'/login', element:<LogIn></LogIn>},
+            {path:'/singup', element:<SingUp></SingUp>}
 
 
         ]
