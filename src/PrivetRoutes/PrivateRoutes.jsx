@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate, useLocation, useNavigate } from 'react-router';
+import ReactSpinar from '../ReactSpinar/ReactSpinar';
 
-const PrivateRoutes = ({children}) => {
-    const {user}=useContext(AuthContext)
-    const location =useNavigate()
-     if(!user){
-        return <Navigate state={location.pathname} to='/login'/>
+const PrivateRoutes = ({ children }) => {
+    const { user, loading } = useContext(AuthContext)
+    const location = useLocation()
+    // console.log(location);
+    // console.log(loading);
+    if (loading) {
+        return <ReactSpinar></ReactSpinar>;
     }
+    if (!user) {
+        return <Navigate state={{ from: location }} replace to='/login' />
+    }
+
     return children
 };
 

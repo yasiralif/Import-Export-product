@@ -8,7 +8,8 @@ const LogIn = () => {
    const location = useLocation()
    const navigate = useNavigate()
    console.log(location);
-   const from = location.state|| "/";
+   const from = location?.state?.from.pathname|| "/";
+   console.log(from);
    const {userlogIn, googleLogin}=useContext(AuthContext)
    const handleSubmit=(e)=>{
     e.preventDefault()
@@ -32,6 +33,8 @@ const LogIn = () => {
 
     const google = () => {
     googleLogin().then(res => {
+      navigate(from, { replace: true });
+
      
      console.log(res);
     }).catch(err => {

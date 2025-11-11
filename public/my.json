@@ -1,0 +1,112 @@
+[
+  {
+    "id": 101,
+    "name": "Navy Blue Polo T-Shirt",
+    "category": "Shirts",
+    "price": 999.00,
+    "color": "Navy Blue",
+    "size": "M",
+    "description": "Premium cotton polo t-shirt for casual wear.",
+    "image_link": "https://img.drz.lazcdn.com/static/bd/p/d413b7fb1d16e9f9087da27e33063f89.jpg_720x720q80.jpg_.webp",
+    "brand": "StyleCo"
+  },
+  {
+    "id": 102,
+    "name": "Classic Straight-Fit Jeans",
+    "category": "Bottoms",
+    "price": 1850.50,
+    "color": "Dark Wash Denim",
+    "size": "32x32",
+    "description": "Durable dark wash denim jeans with a straight fit.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/11/1962cca1-1ca4-454d-a869-148a2f84e0a1.jpg",
+    "brand": "DenimPro"
+  },
+  {
+    "id": 103,
+    "name": "Grey Melange Hoodie",
+    "category": "Outerwear",
+    "price": 1499.00,
+    "color": "Grey Melange",
+    "size": "L",
+    "description": "Comfortable fleece-lined pullover hoodie with a kangaroo pocket.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/11/4cd592db-dc98-4547-861e-948e49877d2a-300x400.jpg",
+    "brand": "ComfyWear"
+  },
+  {
+    "id": 104,
+    "name": "Formal White Dress Shirt",
+    "category": "Shirts",
+    "price": 1200.75,
+    "color": "White",
+    "size": "40",
+    "description": "Slim-fit, non-iron cotton dress shirt for formal occasions.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/11/98d89cff-2b07-4c2e-bc4f-eab2e1779a0d-300x400.jpg",
+    "brand": "ExecutiveFit"
+  },
+  {
+    "id": 105,
+    "name": "Black Leather Wallet",
+    "category": "Accessories",
+    "price": 750.00,
+    "color": "Black",
+    "size": "One Size",
+    "description": "Genuine leather bi-fold wallet with multiple card slots.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/10/b977b549-001a-414e-a326-ef310706d808-300x400.jpg",
+    "brand": "LeatherCraft"
+  },
+  {
+    "id": 106,
+    "name": "Light Brown Chinos",
+    "category": "Bottoms",
+    "price": 1600.00,
+    "color": "Khaki",
+    "size": "34",
+    "description": "Versatile khaki chinos for a smart-casual look.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/10/7a852dfe-3786-4e3c-a976-2ce1cfc8792a-300x400.jpg",
+    "brand": "StyleCo"
+  },
+  {
+    "id": 107,
+    "name": "Waterproof Windbreaker Jacket",
+    "category": "Outerwear",
+    "price": 2490.00,
+    "color": "Olive Green",
+    "size": "XL",
+    "description": "Lightweight, waterproof jacket perfect for rainy days.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/10/a0f83b2c-93cf-4167-a351-20a6a74b2683-300x400.jpg",
+    "brand": "AdventureGear"
+  },
+  {
+    "id": 108,
+    "name": "Black Sport Sneakers",
+    "category": "Footwear",
+    "price": 2899.50,
+    "color": "Black",
+    "size": "UK 9",
+    "description": "Lightweight black running shoes with comfortable sole.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/10/b814036d-b33a-488d-9e83-53d95844edcf-300x400.jpg",
+    "brand": "StrideFast"
+  },
+  {
+    "id": 109,
+    "name": "Striped Crew Neck Sweater",
+    "category": "Sweaters",
+    "price": 1950.00,
+    "color": "Navy/White Stripes",
+    "size": "M",
+    "description": "Warm knitted sweater with a classic striped pattern.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/10/87252121-cbae-4220-a6aa-ee03f21fc18e-300x400.jpg",
+    "brand": "ComfyWear"
+  },
+  {
+    "id": 110,
+    "name": "Leather Belt with Metal Buckle",
+    "category": "Accessories",
+    "price": 550.00,
+    "color": "Brown",
+    "size": "36",
+    "description": "Reversible brown/black leather belt for everyday use.",
+    "image_link": "https://www.lerevecraze.com/wp-content/uploads/2025/10/92dc07a2-473a-4c80-9537-d49ba7eba9b1-300x400.jpg",
+    "brand": "LeatherCraft"
+  }
+]

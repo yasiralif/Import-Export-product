@@ -6,6 +6,7 @@ import auth from '../Firebase/Frirebase.config';
 
 const AuthProvider = ({children}) => {
     const [user, setuser]=useState(null)
+    const [loading, setloding]=useState(true)
 
 
     const userlogIn =(email, password)=>{
@@ -31,13 +32,13 @@ const AuthProvider = ({children}) => {
     // on auth state 
     
     useEffect(()=>{
+      setloding(true)
       const unsubscribe=   onAuthStateChanged(auth, (currentUser)=>{
         setuser(currentUser)
-
+        setloding(false)
       })
       return () => {
       unsubscribe()
-
     }
 
     },[])
@@ -49,7 +50,9 @@ const AuthProvider = ({children}) => {
         googleLogin,
         emailLogin,
         userlogIn,
-        singOut
+        singOut, 
+        loading,
+        setloding
 
     }
     return (
