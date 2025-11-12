@@ -78,15 +78,34 @@ const Pet = () => {
 
         {/* === Quantity & Add to Cart === */}
         <div className="flex items-center gap-3 mb-5">
-          <input
+          {/* <input
             type="number"
             min="1"
             defaultValue="1"
             className="input input-bordered w-16 text-center"
-          />
-          <button className="btn bg-[#88a1b6] text-white hover:bg-[#6f8ba3]">
+          /> */}
+          {/* <button >
             IMPORT PROUDUCT
-          </button>
+          </button> */}
+          {/* Open the modal using document.getElementById('ID').showModal() method */}
+<button className="btn bg-[#88a1b6] text-white hover:bg-[#6f8ba3]" onClick={()=>document.getElementById('my_modal_5').showModal()}>IMPORT PROUDUCT</button>
+<dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Hello!</h3>
+    {/* <p className="py-4">Press ESC key or click the button below to close</p> */}
+    <fieldset className="fieldset">
+  <legend className="fieldset-legend">Your Import Quantity</legend>
+  <input type="text" className="input" placeholder="Enter Your Import Quantity" />
+  
+</fieldset>
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">IMPORT</button>
+      </form>
+    </div>
+  </div>
+</dialog>
         </div>
 
         {/* === Stock Info === */}
