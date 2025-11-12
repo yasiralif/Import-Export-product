@@ -5,8 +5,7 @@ import { useLoaderData } from "react-router";
 const Pet = () => {
       const data =useLoaderData()
     // console.log(data);
-    const{image_link2,category,name, price,description,brand,
-stock}=data
+    const{image_link2,category,name, price,description,brand,create_by,stock}=data
   return (
     <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-10">
       {/* ===== Left: Product Image ===== */}
@@ -47,9 +46,9 @@ stock}=data
           <p className="text-sm">
             <span className="font-semibold">Brand:</span> {brand}
           </p>
-          {/* <p className="text-sm">
-            <span className="font-semibold">Reference:</span> DEMO_2
-          </p> */}
+          <p className="text-sm">
+            <span className="font-semibold">CreateBy:</span> {create_by}
+          </p>
         </div>
 
         <p className="text-gray-700 mb-4">

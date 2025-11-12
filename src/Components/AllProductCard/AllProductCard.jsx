@@ -1,46 +1,64 @@
-import { Eye, ShoppingCart } from 'lucide-react';
-import React, { useState } from 'react';
-import { Link } from 'react-router';
+import { Eye } from "lucide-react";
 
-const AllProductCard = ({SingleData}) => {
-    const{image_link,name, price,description}=SingleData
-    const [isHovered, setIsHovered] = useState(false);
-    // console.log(toggle);
-    return (
-        <div
-             onMouseEnter={() => setIsHovered(true)}  
-      onMouseLeave={() => setIsHovered(false)}  
-        className='mx-auto my-2'>
-            <div className="card card-sm hover:cursor-pointer bg-base-200 max-w-60 shadow">
-  <figure className="hover-gallery">
-    <img className='h-72' src={image_link} />
-    <img src="https://www.lerevecraze.com/wp-content/uploads/2025/11/ba36bb3c-353b-429b-9466-8cd4cdf58e5a.jpg" />
-    {/* <img src="https://img.daisyui.com/images/stock/daisyui-hat-3.webp" /> */}
-    {/* <img src="https://img.daisyui.com/images/stock/daisyui-hat-4.webp" /> */}
-  </figure>
- {
-    isHovered?<div 
+import { useState } from "react";
+import { Link } from "react-router";
 
-      className="card-body h-27">
-    
-     {/* <button className='btn'><ShoppingCart />Add To Cart</button> */}
-     <Link to={`/all-product/${SingleData._id}`}><button className='btn'><Eye />See Details</button></Link>
-    
 
-  </div>:<div 
 
-      className="card-body">
-    <h2 className="card-title h-8 flex justify-between">
-     {name}
-      <span className="font-normal">${price}</span>
-    </h2>
-    <p>{description}</p>
-  </div>
- }
-</div>
-            
+const AllProductCard = ({ SingleData }) => {
+  const { image_link, name, price, origin_country, rating, stock, _id } = SingleData;
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="max-w-[270px] bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 mx-auto my-4 cursor-pointer"
+    >
+      {/* Image Section */}
+      <div className="relative w-70 h-64 overflow-hidden">
+        {/* Main image */}
+        <img
+          src={image_link}
+          alt={name}
+          className={`w-full h-full object-cover transition-transform duration-500 ${
+            isHovered ? "scale-110 blur-[2px]" : "scale-100"
+          }`}
+        />
+
+        {/* Hover gallery */}
+        {isHovered && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/40 backdrop-blur-sm transition-all duration-500">
+            <Link className="btn bg-[#88a1b6] text-white hover:bg-[#6f8ba3]" to={`/all-product/${_id}`}>
+            <Eye size={18} /> See Detalis
+            </Link>
+
+            {/* See Details Button */}
+            {/* <Link to={`/all-product/${_id}`}>
+              <button className="btn bg-white text-gray-800 font-semibold hover:bg-gray-100 flex items-center gap-2 transition-all">
+                <Eye size={18} /> See Details
+              </button>
+            </Link> */}
+          </div>
+        )}
+      </div>
+
+      {/* Product Info Section */}
+      <div className="p-4">
+        <div className="flex justify-between items-center mb-1">
+          <h2 className="font-semibold text-gray-800 text-lg truncate">{name}</h2>
+          <span className="text-gray-700 font-medium text-sm">${price}</span>
         </div>
-    );
+
+        <p className="text-sm text-gray-500 mb-1">Origin: {origin_country}</p>
+
+        <div className="flex justify-between text-sm text-gray-600 mt-2">
+          <span>⭐ {rating}</span>
+          <span>Stock: {stock}</span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default AllProductCard;

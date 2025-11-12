@@ -6,7 +6,7 @@ const AllProducts = () => {
     const data = useLoaderData()
     // console.log(data);
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 '> 
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 '> 
             {
                 data.map(SingleData=><AllProductCard key={SingleData._id} SingleData={SingleData}></AllProductCard>)
             }

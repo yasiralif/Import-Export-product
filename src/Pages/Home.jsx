@@ -1,4 +1,5 @@
 import React from 'react';
+import FashionBanner from './FaishonBanner/FashionBanner';
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
     </div>
   </div>
 </div>
+<FashionBanner></FashionBanner>
             
         </div>
     );
