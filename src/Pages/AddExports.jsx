@@ -26,7 +26,7 @@ const AddExports = () => {
       created_at: new Date().toISOString(),
     };
 
-    fetch("http://localhost:3000/user-exports", {
+    fetch("https://new-2-swart.vercel.app/user-exports", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const AddExports = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-purple-700 via-pink-500 to-orange-400">
-      
+
       <form
         onSubmit={handleSubmit}
         className="backdrop-blur-lg bg-white/20 border border-white/30 w-full max-w-5xl rounded-3xl shadow-2xl p-10 grid grid-cols-1 md:grid-cols-2 gap-8 text-white"
@@ -82,7 +82,7 @@ const AddExports = () => {
           <input
             name="price"
             type="number"
-           
+
             required
             placeholder="Enter price"
             className="mt-2 w-full rounded-xl border-none bg-white/30 text-gray-900 p-3 shadow focus:outline-none focus:ring-2 focus:ring-pink-400"

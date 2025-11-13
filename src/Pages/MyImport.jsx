@@ -9,12 +9,12 @@ const MyImport = () => {
   const { user } = useContext(AuthContext);
   const [mydata, setMyData] = useState([]);
 
-  const handelDelet=(e)=>{
+  const handelDelet = (e) => {
 
   }
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user-imports?email=${user.email}`)
+    fetch(`https://new-2-swart.vercel.app/user-imports?email=${user.email}`)
       .then(res => res.json())
       .then(data => setMyData(data))
       .catch(err => console.error(err));

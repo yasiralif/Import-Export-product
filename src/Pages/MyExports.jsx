@@ -7,10 +7,10 @@ const MyExports = () => {
   const [data, setMyData] = useState([])
 
 
-  
+
   useEffect(() => {
 
-    fetch(`http://localhost:3000/user-exports?email=${user.email}`)
+    fetch(`https://new-2-swart.vercel.app/user-exports?email=${user.email}`)
       .then(res => res.json())
       .then(data => setMyData(data))
       .catch(err => console.error(err));
@@ -43,12 +43,12 @@ const MyExports = () => {
           <option value="low-high">Low → High</option>
         </select>
       </div> */}
-     <div className=''>
-       {
-        data.map(d => <MyExportsCard key={d._id} d={d}></MyExportsCard>
-        )
-      }
-     </div>
+      <div className=''>
+        {
+          data.map(d => <MyExportsCard key={d._id} d={d}></MyExportsCard>
+          )
+        }
+      </div>
 
 
     </div>

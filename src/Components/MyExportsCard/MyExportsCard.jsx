@@ -20,8 +20,8 @@ const MyExportsCard = ({ d }) => {
     description2,
   } = d;
 
-      const handelDelet = () => {
-    fetch(`http://localhost:3000/user-exports/${_id}`, {
+  const handelDelet = () => {
+    fetch(`https://new-2-swart.vercel.app/user-exports/${_id}`, {
       method: "DELETE",
     })
       .then(res => res.json())
@@ -30,11 +30,11 @@ const MyExportsCard = ({ d }) => {
         window.location.reload()
       });
   };
-   
-  
+
+
   const handelUpdate = (e) => {
     e.preventDefault()
-   
+
     const fromdata = {
       name: e.target.name.value,
       category: e.target.category.value,
@@ -51,10 +51,10 @@ const MyExportsCard = ({ d }) => {
       description2: e.target.description2.value,
     }
 
-    
 
 
-    fetch(`http://localhost:3000/all-products/${_id}`, {
+
+    fetch(`https://new-2-swart.vercel.app/all-products/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -62,11 +62,11 @@ const MyExportsCard = ({ d }) => {
       body: JSON.stringify(fromdata),
     })
       .then((res) => res.json())
-      .then(data => {})
+      .then(data => { })
       .catch(err => toast.error(err.code))
 
     toast.success("You Are Successfully Update Product")
-    
+
     document.getElementById(`my_modal_${_id}`).close();
   }
   return (
@@ -103,18 +103,18 @@ const MyExportsCard = ({ d }) => {
 
         {/* Right side - Buttons */}
         <div className="flex items-center space-x-3 ">
-        <div className='flex gap-2 flex-col md:flex-row '> 
+          <div className='flex gap-2 flex-col md:flex-row '>
             <button onClick={handelDelet} className="hover:cursor-pointer px-5 py-2 rounded-xl font-semibold bg-gradient-to-r from-red-500 to-pink-500 text-white shadow hover:opacity-90 transition-all duration-300">
-            Delete
-          </button>
-          {/* Open the modal using document.getElementById('ID').showModal() method */}
-          <button
-            className="hover:cursor-pointer px-6 py-2 rounded-xl font-semibold bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg hover:opacity-90 hover:scale-105 transform transition-all duration-300"
-            onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}
-          >
-            ✏️ Update
-          </button>
-        </div>
+              Delete
+            </button>
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+            <button
+              className="hover:cursor-pointer px-6 py-2 rounded-xl font-semibold bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg hover:opacity-90 hover:scale-105 transform transition-all duration-300"
+              onClick={() => document.getElementById(`my_modal_${_id}`).showModal()}
+            >
+              ✏️ Update
+            </button>
+          </div>
 
           {/* Update Modal */}
           <dialog id={`my_modal_${_id}`} className="modal modal-bottom sm:modal-middle">
