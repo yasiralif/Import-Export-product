@@ -15,7 +15,7 @@ const Card = ({
 }) => {
   return (
     
-    <div className="relative flex w-80 flex-col rounded-xl hover:bg-gradient-to-r from-indigo-600 to-purple-600  bg-white bg-clip-border text-gray-700 shadow-md">
+    <div className="relative flex flex-col rounded-xl hover:bg-gradient-to-r from-indigo-600 to-purple-600  bg-white bg-clip-border text-gray-700 shadow-md">
 
       {/* Image + Hover Gradient */}
       <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl shadow-lg group">

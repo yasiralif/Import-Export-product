@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, NavLink } from 'react-router';
 import { CircleUser } from 'lucide-react';
 import  './Navbar.css'
@@ -9,7 +9,10 @@ import toast from 'react-hot-toast';
 const Navbar = () => {
   const {user, singOut} =useContext(AuthContext)
 
-
+useEffect(() => {
+  const theme = localStorage.getItem("theme") || "light";
+  document.querySelector("html").setAttribute("data-theme", theme);
+}, []);
   const handelLogout=(e)=>{
     singOut()
     .then(res=>{
@@ -83,6 +86,27 @@ const Navbar = () => {
                 </Link>
               
               </li>
+              <li><button> 
+<label className="swap cursor-pointer">
+  <input 
+    type="checkbox"
+    checked={localStorage.getItem("theme") === "dark"}
+    onChange={(e) => {
+      if (e.target.checked) {
+        document.querySelector("html").setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.querySelector("html").setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+      }
+    }}
+  />
+
+  <div className="swap-on">Dark</div>
+  <div className="swap-off">Light</div>
+</label>
+
+        </button></li>
               
               <li><button onClick={handelLogout}>Logout</button></li>
             </ul>
