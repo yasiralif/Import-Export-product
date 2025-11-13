@@ -1,113 +1,114 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
-import auth from './../Firebase/Frirebase.config';
+import auth from '../Firebase/firebase.config';
 import { AuthContext } from '../Context/AuthContext';
 import toast from 'react-hot-toast';
 // import { toast } from 'react-hot-toast';
 const SingUp = () => {
-  const {googleLogin,emailLogin, setuser,setuserdata}=useContext(AuthContext)
-  const  navigate= useNavigate();
+  const { googleLogin, emailLogin, setuser, setuserdata } = useContext(AuthContext)
+  const navigate = useNavigate();
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault()
-          const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-           const email =e.target.email.value;
-         const pohtoURL =e.target.pohtoUrl.value;
-         const displayName =e.target.name.value;
-   const password =e.target.password.value;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    const email = e.target.email.value;
+    const pohtoURL = e.target.pohtoUrl.value;
+    const displayName = e.target.name.value;
+    const password = e.target.password.value;
 
-   // password valitation
-     if (!passwordRegex.test(password)) {
+    // password valitation
+    if (!passwordRegex.test(password)) {
       toast.error("Password must have at least 6 characters, 1 uppercase, 1 lowercase, 1 number & 1 special symbol!");
       return;
     }
- 
-    emailLogin(email,password)
-    .then(res=>{
-      setuser(res.user)
-      setuserdata({displayName, pohtoURL})
-      navigate('/')
-      toast.success('succesfully login')
-    })
-    .catch(err=>{
-     toast.error(err.code)
-    // console.log(err);
 
-    })
+    emailLogin(email, password)
+      .then(res => {
+        setuser(res.user)
+        setuserdata({ displayName, pohtoURL })
+        navigate('/')
+        toast.success('succesfully login')
+      })
+      .catch(err => {
+        toast.error(err.code)
+       
+
+      })
   }
 
   // google log in
-     const google = () => {
+  const google = () => {
     googleLogin().then(res => {
       setuser(res.user)
-     navigate('/')
+      navigate('/')
       toast.success("You Are SuccessFully Log In With Google")
     }).catch(err => {
-         if(err.code=='auth/email-already-in-use'){
-     toast.error('auth/email-already-in-use')
-  }   
-    })}
-  
-      // show toggle
-    const [showPassword, setShowPassword] = useState(false);
-  const handleToggle=()=>{
+      if (err.code == 'auth/email-already-in-use') {
+        toast.error('auth/email-already-in-use')
+      }
+    })
+  }
+
+  // show toggle
+  const [showPassword, setShowPassword] = useState(false);
+  const handleToggle = () => {
     setShowPassword(!showPassword)
   }
 
 
 
 
-//   const handleSubmit=(e)=>{
-//       e.preventDefault()
-//          const email =e.target.email.value;
-//          const pohtoUrl =e.target.pohtoUrl.value;
-//          const name =e.target.name.value;
-//    const password =e.target.password.value;
-      // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  //   const handleSubmit=(e)=>{
+  //       e.preventDefault()
+  //          const email =e.target.email.value;
+  //          const pohtoUrl =e.target.pohtoUrl.value;
+  //          const name =e.target.name.value;
+  //    const password =e.target.password.value;
+  // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   // if (!passwordRegex.test(password)) {
   //     toast.error("Password must have at least 8 characters, 1 uppercase, 1 lowercase, 1 number & 1 special symbol!");
   //     return;
   //   }
-//    const from = location.state?.from|| "/";
-//   createuser(email, password)
-//   .then(result=>{
-//     updateUserProfile(name, pohtoUrl)
-//     setuser(result.user);
-//     toast.success("successfully create an account")
-//   })
-//   .catch(err=>{
-   
+  //    const from = location.state?.from|| "/";
+  //   createuser(email, password)
+  //   .then(result=>{
+  //     updateUserProfile(name, pohtoUrl)
+  //     setuser(result.user);
+  //     toast.success("successfully create an account")
+  //   })
+  //   .catch(err=>{
+
   // if(err.code=='auth/email-already-in-use'){
   //    toast.error('auth/email-already-in-use')
   // }
-   
-//   })
 
-//   }
+  //   })
+
+  //   }
 
 
 
 
   //google sing in
 
-//   if(loading){
-//     <span className="loading loading-ring loading-xl"></span>
-//   }
+  //   if(loading){
+  //     <span className="loading loading-ring loading-xl"></span>
+  //   }
 
-  
-//   if (user) {
-  
-//     return <MyProfile user={user} setuser={setuser}></MyProfile>;
-//   }
 
- 
-    return (
-    
+  //   if (user) {
 
- <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-300">
+  //     return <MyProfile user={user} setuser={setuser}></MyProfile>;
+  //   }
+
+
+  return (
+
+
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-300">
       <div className="hero-content flex-col lg:flex-row-reverse">
-           
+
         {/* Left Text Section */}
         <div className="text-center lg:text-left text-white max-w-md">
           <h1 className="text-5xl font-bold">Sign Up Now!</h1>
@@ -125,44 +126,44 @@ const SingUp = () => {
         {/* Signup Card */}
         <div className="card bg-base-100 w-full max-w-sm shadow-2xl">
           <div className="card-body">
-           <form onSubmit={handleSubmit} >
-             <fieldset className="fieldset">
-              <label className="label">Full Name</label>
-              <input type="text" required className="input" name='name' placeholder="Type Your name" />
-              <label className="label">Photo Url</label>
-              <input type="text"  required className="input" name='pohtoUrl' placeholder="Enter your Image Url" />
+            <form onSubmit={handleSubmit} >
+              <fieldset className="fieldset">
+                <label className="label">Full Name</label>
+                <input type="text" required className="input" name='name' placeholder="Type Your name" />
+                <label className="label">Photo Url</label>
+                <input type="text" required className="input" name='pohtoUrl' placeholder="Enter your Image Url" />
 
-              <label className="label">Email</label>
-              <input type="email" required className="input" name='email'  placeholder="Email" />
+                <label className="label">Email</label>
+                <input type="email" required className="input" name='email' placeholder="Email" />
 
-              <label className="label">Password</label>
-              <div className='relative   items-center'>
-                 <input   required  className="input input-bordered w-full " type={showPassword ? 'text' : 'password'}  name='password' placeholder="Password" />
-                      <div
-        onClick={handleToggle}
-       className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-gray-500 z-10 hover:text-gray-700"
-      >
-        {showPassword ? <Eye /> : <EyeOff />}
-      </div>
-              </div>
-             
+                <label className="label">Password</label>
+                <div className='relative   items-center'>
+                  <input required className="input input-bordered w-full " type={showPassword ? 'text' : 'password'} name='password' placeholder="Password" />
+                  <div
+                    onClick={handleToggle}
+                    className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-gray-500 z-10 hover:text-gray-700"
+                  >
+                    {showPassword ? <Eye /> : <EyeOff />}
+                  </div>
+                </div>
 
-           
-              <button className="btn btn-primary mt-4">Sign Up</button>
-            </fieldset>
 
-           </form>
+
+                <button className="btn btn-primary mt-4">Sign Up</button>
+              </fieldset>
+
+            </form>
             <div className="divider">OR</div>
 
             <button onClick={google} className="btn btn-outline w-full mb-2">
               Continue with Google
             </button>
-          
+
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default SingUp;

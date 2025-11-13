@@ -7,8 +7,7 @@ import BlueHoverButton from '../../Components/BlueHoverButton/BlueHoverButton';
 const MyProfile = () => {
     const nevigate =useNavigate()
     const{user, userdata,singOut}=useContext(AuthContext)
-    // console.log(userdata);
-    // console.log(user);
+    
   const {
     name =user.displayName|| userdata.displayName,
     username = user.email|| userdata.email,

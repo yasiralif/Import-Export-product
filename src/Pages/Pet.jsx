@@ -9,7 +9,7 @@ const Pet = () => {
   const{user}=useContext(AuthContext)
   
   const { image_link2,image_link, category, name, price, description, brand, create_by, stock, _id } = data
-  console.log(data);
+ 
 const handleImport = (e) => {
   e.preventDefault();
 
@@ -51,7 +51,7 @@ const handleImport = (e) => {
         document.getElementById(`my_modal_${_id}`).close();
             window.location.reload();
         
-      // console.log(d);
+     
     })
     .catch(err=>toast.error(err.code))
 

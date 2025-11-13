@@ -4,10 +4,10 @@ import { useLoaderData } from 'react-router';
 
 const AllProductsDetalis = () => {
     const data =useLoaderData()
-    // console.log(data);
+  
     const{image_link,name, price,description}=data
     const [isHovered, setIsHovered] = useState(false);
-    // console.log(toggle);
+ 
     return (
    <div className='flex justify-center items-center'>
          <div

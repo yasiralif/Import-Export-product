@@ -2,31 +2,32 @@ import { Eye, EyeOff } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
+import toast from 'react-hot-toast';
 
 const LogIn = () => {
    const [showPassword, setShowPassword] = useState(false);
    const location = useLocation()
    const navigate = useNavigate()
-   console.log(location);
+   
    const from = location?.state?.from.pathname|| "/";
-   console.log(from);
+
    const {userlogIn, googleLogin}=useContext(AuthContext)
    const handleSubmit=(e)=>{
     e.preventDefault()
          const email =e.target.email.value;
          const password =e.target.password.value;
-         console.log(email, password);
+         
          userlogIn(email,password)
           .then(res=>{
-      console.log(res);
-      alert('succesfully login')
+      
+      toast.success('succesfully login')
       // navigate(location, { replace: true });
      navigate(from, { replace: true });
 
     })
     .catch(err=>{
     //  alert(err.code)
-    console.log(err);
+    toast.error(err.code)
 
     })
 }
@@ -36,7 +37,6 @@ const LogIn = () => {
       navigate(from, { replace: true });
 
      
-     console.log(res);
     }).catch(err => {
       alert(err.code)
       

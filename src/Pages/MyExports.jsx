@@ -7,7 +7,7 @@ const MyExports = () => {
   const [data, setMyData] = useState([])
 
 
-  // console.log(data);
+  
   useEffect(() => {
 
     fetch(`http://localhost:3000/user-exports?email=${user.email}`)

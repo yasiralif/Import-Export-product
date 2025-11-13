@@ -6,8 +6,7 @@ import ReactSpinar from '../ReactSpinar/ReactSpinar';
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation()
-    // console.log(location);
-    // console.log(loading);
+
     if (loading) {
         return <ReactSpinar></ReactSpinar>;
     }

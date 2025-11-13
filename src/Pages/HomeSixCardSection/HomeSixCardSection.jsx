@@ -5,7 +5,7 @@ import Card from '../../Components/DesginCard/Card';
 import Input from '../../Components/Scarch/Input';
 
 const HomeSixCardSection = ({homeData}) => {
-    // console.log(homeData);
+ 
     return (
         <div className=' bg-[#e8e8e8]  '>
 
