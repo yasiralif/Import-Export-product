@@ -13,6 +13,7 @@ import AllProductsDetalis from "../Pages/AllProductDetalis/AllProductsDetalis";
 import Pet from "../Pages/Pet";
 import MyImportCardDetalis from "../Pages/MyImportCardDetalis/MyImportCardDetalis";
 import MyProfile from "../Pages/MyProfile/MyProfile";
+import ErrorPage from "../Pages/ErrorPages/ErrorPage";
 
 
 const Router = createBrowserRouter([
@@ -59,6 +60,9 @@ const Router = createBrowserRouter([
                 path:'/my-profile' , element: <PrivateRoutes>
                     <MyProfile></MyProfile>
                 </PrivateRoutes>
+            },
+            {
+                path:"*", Component: ErrorPage
             }
 
 
