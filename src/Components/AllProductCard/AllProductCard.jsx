@@ -2,6 +2,7 @@ import { Eye } from "lucide-react";
 
 import { useState } from "react";
 import { Link } from "react-router";
+import PickUpButton from "../Button/PickUpButton/PickUpButton";
 
 
 
@@ -11,9 +12,10 @@ const AllProductCard = ({ SingleData }) => {
 
   return (
     <div
+    
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="max-w-[270px] bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 mx-auto my-4 cursor-pointer"
+      className="max-w-[270px] bg-[#fafaee] rounded-2xl shadow-md hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 mx-auto my-4 cursor-pointer"
     >
       {/* Image Section */}
       <div className="relative w-70 h-64 overflow-hidden">
@@ -29,8 +31,12 @@ const AllProductCard = ({ SingleData }) => {
         {/* Hover gallery */}
         {isHovered && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/40 backdrop-blur-sm transition-all duration-500">
-            <Link className="btn bg-[#88a1b6] text-white hover:bg-[#6f8ba3]" to={`/all-product/${_id}`}>
-            <Eye size={18} /> See Detalis
+            <Link 
+            // className="btn bg-[#88a1b6] text-white hover:bg-[#6f8ba3]" 
+            to={`/all-product/${_id}`}>
+            <PickUpButton label="See Detalis"/>
+            
+            {/* <Eye size={18} /> See Detalis */}
             </Link>
 
             {/* See Details Button */}

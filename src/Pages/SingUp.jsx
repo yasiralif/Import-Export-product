@@ -1,55 +1,74 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useContext, useState } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import auth from './../Firebase/Frirebase.config';
 import { AuthContext } from '../Context/AuthContext';
+import toast from 'react-hot-toast';
+// import { toast } from 'react-hot-toast';
 const SingUp = () => {
-  const {googleLogin,emailLogin, user, setuser}=useContext(AuthContext)
-  // console.log(user);
+  const {googleLogin,emailLogin, setuser,setuserdata}=useContext(AuthContext)
+  const  navigate= useNavigate();
 
   const handleSubmit=(e)=>{
     e.preventDefault()
+          const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
            const email =e.target.email.value;
-        //  const pohtoUrl =e.target.pohtoUrl.value;
-        //  const name =e.target.name.value;
+         const pohtoURL =e.target.pohtoUrl.value;
+         const displayName =e.target.name.value;
    const password =e.target.password.value;
-   console.log(email, password);
 
+   // password valitation
+     if (!passwordRegex.test(password)) {
+      toast.error("Password must have at least 6 characters, 1 uppercase, 1 lowercase, 1 number & 1 special symbol!");
+      return;
+    }
+ 
     emailLogin(email,password)
     .then(res=>{
       setuser(res.user)
-      alert('succesfully login')
+      setuserdata({displayName, pohtoURL})
+      navigate('/')
+      toast.success('succesfully login')
     })
     .catch(err=>{
-     alert(err.code)
-    console.log(err);
+     toast.error(err.code)
+    // console.log(err);
 
     })
   }
+
+  // google log in
      const google = () => {
     googleLogin().then(res => {
       setuser(res.user)
-     alert('succesfully login')
+     navigate('/')
+      toast.success("You Are SuccessFully Log In With Google")
     }).catch(err => {
-      alert(err.code)
-      
+         if(err.code=='auth/email-already-in-use'){
+     toast.error('auth/email-already-in-use')
+  }   
     })}
   
+      // show toggle
+    const [showPassword, setShowPassword] = useState(false);
+  const handleToggle=()=>{
+    setShowPassword(!showPassword)
+  }
 
 
-//  const{createuser, user,setuser,googleLogin,gitLonIn,updateUserProfile,loading, setloading}=use(AuthContext)
-// const location =useLocation();
+
+
 //   const handleSubmit=(e)=>{
 //       e.preventDefault()
 //          const email =e.target.email.value;
 //          const pohtoUrl =e.target.pohtoUrl.value;
 //          const name =e.target.name.value;
 //    const password =e.target.password.value;
-//       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-//   if (!passwordRegex.test(password)) {
-//       toast.error("Password must have at least 8 characters, 1 uppercase, 1 lowercase, 1 number & 1 special symbol!");
-//       return;
-//     }
+      // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  // if (!passwordRegex.test(password)) {
+  //     toast.error("Password must have at least 8 characters, 1 uppercase, 1 lowercase, 1 number & 1 special symbol!");
+  //     return;
+  //   }
 //    const from = location.state?.from|| "/";
 //   createuser(email, password)
 //   .then(result=>{
@@ -59,30 +78,19 @@ const SingUp = () => {
 //   })
 //   .catch(err=>{
    
-//   if(err.code=='auth/email-already-in-use'){
-//      toast.error('auth/email-already-in-use')
-//   }
+  // if(err.code=='auth/email-already-in-use'){
+  //    toast.error('auth/email-already-in-use')
+  // }
    
 //   })
 
 //   }
 
 
-  // show toggle
-    const [showPassword, setShowPassword] = useState(false);
-  const handleToggle=()=>{
-    setShowPassword(!showPassword)
-  }
+
 
   //google sing in
-//     const google = () => {
-//     googleLogin().then(res => {
-//       navigate(from, { replace: true });
-//       toast.success("You Are SuccessFully Log In With Google")
-//     }).catch(err => {
-      
-//     })
-//   }
+
 //   if(loading){
 //     <span className="loading loading-ring loading-xl"></span>
 //   }
@@ -120,16 +128,16 @@ const SingUp = () => {
            <form onSubmit={handleSubmit} >
              <fieldset className="fieldset">
               <label className="label">Full Name</label>
-              <input type="text"  className="input" name='name' placeholder="Type Your name" />
+              <input type="text" required className="input" name='name' placeholder="Type Your name" />
               <label className="label">Photo Url</label>
-              <input type="text"  className="input" name='pohtoUrl' placeholder="Enter your Image Url" />
+              <input type="text"  required className="input" name='pohtoUrl' placeholder="Enter your Image Url" />
 
               <label className="label">Email</label>
-              <input type="email" className="input" name='email'  placeholder="Email" />
+              <input type="email" required className="input" name='email'  placeholder="Email" />
 
               <label className="label">Password</label>
               <div className='relative   items-center'>
-                 <input     className="input input-bordered w-full " type={showPassword ? 'text' : 'password'}  name='password' placeholder="Password" />
+                 <input   required  className="input input-bordered w-full " type={showPassword ? 'text' : 'password'}  name='password' placeholder="Password" />
                       <div
         onClick={handleToggle}
        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-gray-500 z-10 hover:text-gray-700"
@@ -149,9 +157,7 @@ const SingUp = () => {
             <button onClick={google} className="btn btn-outline w-full mb-2">
               Continue with Google
             </button>
-            {/* <button onClick={gitLonIn} className="btn btn-outline w-full">
-              Continue with GitHub
-            </button> */}
+          
           </div>
         </div>
       </div>

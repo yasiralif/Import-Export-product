@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from './../Context/AuthContext';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const AddExports = () => {
   const { user } = useContext(AuthContext);
@@ -35,17 +35,12 @@ const AddExports = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("✅ Server থেকে Response:", data);
-        // alert("Product Added Successfully!");
         toast.success("You Are SuccecssFully Add New Product")
         e.target.reset();
       })
       .catch((err) => toast.error(err));
   };
-  const handleSubmit2=(e)=>{
-    toast.success('you')
-    console.log(22);
-  }
+
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-purple-700 via-pink-500 to-orange-400">
       

@@ -11,13 +11,18 @@ import PrivateRoutes from "../PrivetRoutes/PrivateRoutes";
 import AllProductsDetalis from "../Pages/AllProductDetalis/AllProductsDetalis";
 // import P from "../Pages/Pet";
 import Pet from "../Pages/Pet";
+import MyImportCardDetalis from "../Pages/MyImportCardDetalis/MyImportCardDetalis";
+import MyProfile from "../Pages/MyProfile/MyProfile";
 
 
 const Router = createBrowserRouter([
     {
         path:'/' , Component: RootLayOut,
         children: [
-            { index: true, Component: Home },
+            { index: true, Component: Home, 
+                loader:()=>fetch('http://localhost:3000/latest-products')
+                
+            },
             { path:'/all-products',
             loader:()=>fetch('http://localhost:3000/all-products'),
             element: <PrivateRoutes>
@@ -45,6 +50,15 @@ const Router = createBrowserRouter([
             {
                 path:"/all-product/:id", Component: Pet,
                 loader:({params})=>fetch(`http://localhost:3000/all-products/${params.id}`),
+            },
+            {
+                path:"/my-imports-detalis/:id" , Component: MyImportCardDetalis,
+                loader:({params})=>fetch(`http://localhost:3000/my-imports-detalis/${params.id}`)
+            },
+            {
+                path:'/my-profile' , element: <PrivateRoutes>
+                    <MyProfile></MyProfile>
+                </PrivateRoutes>
             }
 
 

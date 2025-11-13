@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import {  createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../Firebase/Frirebase.config';
@@ -7,6 +7,8 @@ import auth from '../Firebase/Frirebase.config';
 const AuthProvider = ({children}) => {
     const [user, setuser]=useState(null)
     const [loading, setloding]=useState(true)
+    const [userdata, setuserdata]=useState([])
+    // console.log(userdata);
 
 
     const userlogIn =(email, password)=>{
@@ -52,7 +54,9 @@ const AuthProvider = ({children}) => {
         userlogIn,
         singOut, 
         loading,
-        setloding
+        setloding,
+        userdata,
+       setuserdata
 
     }
     return (

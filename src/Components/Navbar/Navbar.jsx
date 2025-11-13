@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router';
 import { CircleUser } from 'lucide-react';
 import  './Navbar.css'
 import { AuthContext } from '../../Context/AuthContext';
+import Uniberbutton from '../Button/UniberButton/Uniberbutton';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const {user, singOut} =useContext(AuthContext)
@@ -11,10 +13,10 @@ const Navbar = () => {
   const handelLogout=(e)=>{
     singOut()
     .then(res=>{
-      // console.log(res);
+      toast.success("You Are SuccessFully Log Out")
     })
     .catch(err=>{
-      // console.log(err);
+      toast.error(err.code)
     })
   }
     return (
@@ -27,7 +29,7 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        className="menu z-10 menu-sm dropdown-content bg-base-100  text-black rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li><NavLink to='/'>Home</NavLink></li>
    <li><NavLink to='/all-products'>All Products</NavLink></li>
    <li><NavLink to='/my-exports'>My Exports</NavLink></li>
@@ -35,7 +37,9 @@ const Navbar = () => {
    <li><NavLink to='/add-export'>Add Export</NavLink></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">PlanHat</a>
+    <a className="btn btn-ghost text-xl">
+      <Uniberbutton/>
+    </a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 ">
@@ -51,13 +55,14 @@ const Navbar = () => {
   <div className="navbar-end">
    
   {
-    user? <div className="dropdown dropdown-end">
+    user? <div className="dropdown z-10  dropdown-end">
             <div
               tabIndex={0}
+              
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
+              <div className="w-10  rounded-full">
                 <img
                   alt="User Profile"
                   src={
@@ -72,10 +77,11 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
+                <Link to='/my-profile' className="justify-between">
                   Profile
                   <span className="badge">New</span>
-                </a>
+                </Link>
+              
               </li>
               
               <li><button onClick={handelLogout}>Logout</button></li>

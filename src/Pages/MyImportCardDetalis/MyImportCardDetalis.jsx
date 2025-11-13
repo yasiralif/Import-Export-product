@@ -1,68 +1,15 @@
-import React, { useContext } from "react";
-import { ShieldCheck, Truck, RotateCcw } from "lucide-react";
-import { useLoaderData } from "react-router";
-import toast from "react-hot-toast";
-import { AuthContext } from "../Context/AuthContext";
+import React, { useContext } from 'react';
+import { useLoaderData } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
+import { RotateCcw, ShieldCheck, Truck } from 'lucide-react';
 
-const Pet = () => {
-  const data = useLoaderData()
+const MyImportCardDetalis = () => {
+    const data = useLoaderData()
   const{user}=useContext(AuthContext)
   
   const { image_link2,image_link, category, name, price, description, brand, create_by, stock, _id } = data
-  console.log(data);
-const handleImport = (e) => {
-  e.preventDefault();
-
-  const importValue = parseInt(e.target.import.value);
-
-  if (importValue > stock) {
-    toast.error("You cannot import more than available stock!");
-    return;
-  }
-
-  const fromdata = {
-    productId: _id,                 
-    quantity: importValue,       
-    name: name,
-    category: category,
-    create_by: user.email,
-    price: parseFloat(price),
-    color: data.color,
-    size: data.size,
-    brand: brand,
-    origin_country: data.origin_country,
-    rating: parseFloat(data.rating),
-    image_link: image_link,
-    image_link2: image_link2,
-    description: data.description,
-    description2: data.description2,
-  };
-
-  fetch("http://localhost:3000/user-imports", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify(fromdata),
-  })
-    .then((res) => res.json())
-    .then((d) => {
-       toast.success("Product imported successfully");
-        document.getElementById(`my_modal_${_id}`).close();
-            window.location.reload();
-        
-      // console.log(d);
-    })
-    .catch(err=>toast.error(err.code))
-
-
-
-     e.target.reset();
- 
-};
-
-  return (
-    <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-10">
+    return (
+          <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-10">
       {/* ===== Left: Product Image ===== */}
       <div>
         <img
@@ -156,7 +103,9 @@ const handleImport = (e) => {
                 Import Product
               </h3>
 
-              <form onSubmit={handleImport}>
+              <form 
+            //   onSubmit={handleImport}
+              >
                 <fieldset className="fieldset border border-gray-300 rounded-xl p-4">
                   <legend className="fieldset-legend text-sm font-semibold text-gray-600 px-2">
                     Your Import Quantity
@@ -220,7 +169,7 @@ const handleImport = (e) => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default Pet;
+export default MyImportCardDetalis;
