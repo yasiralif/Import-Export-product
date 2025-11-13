@@ -8,23 +8,32 @@ const HomeSixCardSection = ({homeData}) => {
     // console.log(homeData);
     return (
         <div className=' bg-[#e8e8e8]  '>
-          
 
-            <div className='  w-11/12 mx-auto py-3'>
-                   <div className='flex justify-between items-center'>
-                <div className='font-semibold text-2xl
+             <div className='  w-11/12 mx-auto py-3'>
+                <div className='flex justify-between items-center'>
+                    <div className='font-semibold text-2xl
 
                  text-amber-500  mt-4 px-6 sm:px-8 py-2 sm:py-3 rounded-md transition-all duration-300 hover:scale-105 
                 '>Scarch Your Product</div>
                  <Input/>
               
 
-            </div>
+                </div>
 
+            </div>
+          
+
+          
 
              {/* <Card/> */}
-            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  '>
-                {
+            <div >
+
+                <div>
+
+           
+
+                <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  '>
+                      {
                     homeData.map(data=>{
                         return(
                             <div className='mt-3  hover:cursor-pointer py-6' key={data._id}>
@@ -55,6 +64,12 @@ const HomeSixCardSection = ({homeData}) => {
                         )
                     })
                 }
+
+
+                </div>
+
+
+              
             </div>
 
 
